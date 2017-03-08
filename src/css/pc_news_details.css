@@ -1,0 +1,26 @@
+.container{
+	width: 100%;
+}
+
+@media screen  and  (max-width:1200px ) {
+	.container{
+		width: 1200px;
+	}
+}
+
+.clearfix:after{
+	display: block;
+	clear: both;
+}
+
+.articleContainer{
+	margin-right: 300px;
+
+}
+
+.articleRight{
+	float: right;
+	text-align: center;
+	width:250px;
+
+}

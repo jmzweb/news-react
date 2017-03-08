@@ -1,0 +1,19 @@
+.topNewsList {
+	width: 99%;
+    	float: left;
+    	text-align: left;
+    	font-size: 14px;
+    	margin-left: 2px;
+    	margin-bottom: 10px;
+}
+
+.topNewsList li{
+	height: 29.6px;
+}
+
+.topNewsList a {
+    line-height: 22px !important;
+    color: #666 !important;
+    font-size: 14px;
+    
+}

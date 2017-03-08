@@ -1,0 +1,57 @@
+.container{
+	padding: 10px;
+}
+.container{
+    width: 100%;
+}
+
+@media screen  and  (max-width:1200px ) {
+    .container{
+        width: 1200px;
+    }
+}
+.leftContainer{
+	width: 95%;
+	float: left;
+}
+
+.carousel{
+	width: 100%;
+	float: left;
+}
+
+.carousel img{
+	width: 100%;
+}
+
+/* rightContainer */
+
+.rightContainer{
+    margin-top: -15px;
+}
+
+/* rightContainer */
+
+
+.tabs_news {
+    padding-left: 10px;
+    width: 460px;
+    float: left;
+}
+
+.tabs_product {
+    width: 300px;
+    padding-left: 10px;
+    float: left;
+}
+
+.tabs_news li {
+    height: 27px;
+    line-height: 27px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 417px;
+    float: left;
+    text-overflow: ellipsis;
+}
