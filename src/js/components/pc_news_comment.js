@@ -24,33 +24,43 @@ class PCNewsComment extends React.Component{
 	}
 
 
-	componentDidMount(){
-		var myFetchOptions = {
-			method:"GET"
-		};
-		fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getcomments&uniquekey="
-			+this.props.uniquekey,myFetchOptions)
-		.then(response =>response.json())
-		.then(json => {
-			this.setState({comments:json});
-			console.log(json);
-		})
-
-	}
-
-	handleSubmit(e) {
-		e.preventDefault();
-		console.log("1");
+	componentDidMount() {
 		var myFetchOptions = {
 			method: 'GET'
 		};
+		var url = window.location.href;
+		var urlList = url.split("/");
+		fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getcomments&uniquekey=" +urlList[urlList.length-1], myFetchOptions).then(response => response.json()).then(json => {
+			this.setState({comments: json});
+			// var url = window.location.href;
+			// var urlList = url.split("/");
+			// console.log(urlList[urlList.length-1]);
+		});
+	};
+	handleSubmit(e) {
+		e.preventDefault();
+		var myFetchOptions = {
+			method: 'GET'
+		};
+		var url = window.location.href;
+		var urlList = url.split("/");
 		var formdata = this.props.form.getFieldsValue();
-		fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=" + localStorage.userid + "&uniquekey=" + this.props.uniquekey + "&commnet=" + formdata.remark, myFetchOptions).then(response => response.json()).then(json => {
+		fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=" + localStorage.userid + "&uniquekey=" + urlList[urlList.length-1] + "&commnet=" + formdata.remark, myFetchOptions).then(response => response.json()).then(json => {
 			this.componentDidMount();
 		})
 	};
 
-
+	addUserCollection() {
+		var myFetchOptions = {
+			method: 'GET'
+		};
+		var urlList = url.split("/");
+		var formdata = this.props.form.getFieldsValue();
+		fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=uc&userid=" + localStorage.userid + "&uniquekey=" + urlList[urlList.length-1] , myFetchOptions).then(response => response.json()).then(json => {
+			//收藏成功以后进行一下全局的提醒
+			notification['success']({message: 'ReactNews提醒', description: '收藏此文章成功'});
+		});
+	};
 
 	render(){
 
@@ -70,8 +80,8 @@ class PCNewsComment extends React.Component{
 
 			<div>
 				<Row>
-					<Col span="2"></Col>
-					<Col span="20">
+					
+					<Col span="24">
 					<header className="commentHeader">评论</header>
 						{commentList}
 						<Form  onSubmit={this.handleSubmit.bind(this)}>
@@ -79,9 +89,11 @@ class PCNewsComment extends React.Component{
 								<Input type="textarea" placeholder="" {...getFieldProps('remark',{initialValue:''})} />
 							</FormItem>
 							<Button type="primary" htmlType="submit">提交</Button>
+							&nbsp;&nbsp;
+							<Button type="primary" htmlType="button" onClick={this.addUserCollection.bind(this)}>收藏该文章</Button>
 						</Form>
 					</Col>
-					<Col span="2"></Col>
+					
 				</Row>
 			</div>
 		)

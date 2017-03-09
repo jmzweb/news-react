@@ -1,0 +1,13 @@
+#mobileSelfcenterContent{
+	margin: 0.2rem;
+}
+
+#mobileHeaderLogo{
+	display: inline-block;
+	margin: 0.06rem  0;
+}
+#mobileHeaderLogo  span{
+	display: inline-block;
+	font-size: 24px;
+	margin-top: 6px;
+}

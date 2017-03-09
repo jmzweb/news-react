@@ -4,6 +4,8 @@ import logo from "../../images/logo.png";
 import "../../css/mobile_header.css";
 import {Menu,Icon,Tabs,message,Form,Input,Button,CheckBox,Modal} from 'antd';
 
+import {Router,Route,Link,browerHistory}  from "react-router";
+
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.MenuItemGroup;
 const FormItem = Form.Item;
@@ -110,16 +112,21 @@ const TabPane = Tabs.TabPane;
 
 	render(){
 		var {getFieldProps} = this.props.form;
-		const userShow = this.state.hasLogined?
-		<Icon type="ellipsis" onClick={this.logout.bind(this)}/>
+		const userShow = this.state.hasLogined
+		?
+		<Link  to={`/selfcenter`}>
+			<Icon type="ellipsis" />
+		</Link>
 		:
 		<Icon type="setting" onClick={this.login.bind(this)} />
 		return(
 			
 			<div id="mobileheader">
 				<header>
-					<img src={logo}/>
-					<span>News</span>
+					<a  id="mobileHeaderLogo"  href="/">
+						<img src={logo}/>
+						<span>News</span>
+					</a>
 					{userShow}
 				</header>
 				<Modal title="用户中心" wrapClassName="vertial-center-modal" visible={this.state.modalVisible} onCancel={()=>this.setModalVisible(false)} onOk={()=>this.setModalVisible(false)} okText="关闭">

@@ -1,0 +1,15 @@
+.mobileDetails{
+	margin: 10px;
+}
+
+.mobileDetails h1{
+	font-size: 1.6em;
+	margin: 10px 0 5px;
+}
+.mobileDetails  #content {
+	margin-top: 20px;
+}
+.mobileDetailscontent{
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid #e8e8e8;
+}

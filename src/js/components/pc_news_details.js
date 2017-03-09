@@ -48,7 +48,12 @@ export default class PCNewsDetails extends React.Component{
 					</Col>
 					<Col span={2}></Col>
 				</Row>
-				<PCNewsComment />
+				<Row>
+					<Col span="2"></Col>
+					<Col span="20"><PCNewsComment /></Col>
+					<Col span="2"></Col>
+				</Row>
+				
 				<PCFooter/>
 			</div>
 		)
